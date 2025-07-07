@@ -16,19 +16,44 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
-
+  List<String> backgroundImagesNames = [
+    'quran_background',
+    'Hadeth_background',
+    'sebha_background',
+    'radio_background',
+    'time_background',
+  ];
   List<Widget> tabs = [
     QuranTab(),
     HadethTab(),
-    RadioTab(),
     SebhaTab(),
+    RadioTab(),
     TimeTab(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: tabs[currentIndex],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/images/${backgroundImagesNames[currentIndex]}.png',
+            ),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/images/header.png',
+              height: MediaQuery.sizeOf(context).height * 0.20,
+              fit: BoxFit.fitWidth,
+            ),
+            tabs[currentIndex],
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (index) {
