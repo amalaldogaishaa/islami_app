@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami_app/screen/NavBarselectedIcon.dart';
 import 'package:islami_app/screen/NavBarunselectedIcon.dart';
 import 'package:islami_app/screen/tabs/hadeth_tab.dart';
-import 'package:islami_app/screen/tabs/quran_tab.dart';
+import 'package:islami_app/screen/tabs/quran/quran_tab.dart';
 import 'package:islami_app/screen/tabs/radio_tab.dart';
 import 'package:islami_app/screen/tabs/sebha_tab.dart';
 import 'package:islami_app/screen/tabs/time_tab.dart';
@@ -35,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
@@ -43,15 +44,17 @@ class _HomeScreenState extends State<HomeScreen> {
             fit: BoxFit.fill,
           ),
         ),
-        child: Column(
-          children: [
-            Image.asset(
-              'assets/images/header.png',
-              height: MediaQuery.sizeOf(context).height * 0.20,
-              fit: BoxFit.fitWidth,
-            ),
-            tabs[currentIndex],
-          ],
+        child: SafeArea(
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/header.png',
+                // height: MediaQuery.sizeOf(context).height * 0.15,
+                fit: BoxFit.fitWidth,
+              ),
+              Expanded(child: tabs[currentIndex]),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
