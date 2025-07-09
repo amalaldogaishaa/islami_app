@@ -363,6 +363,17 @@ class QuranService {
     num: index + 1,
   );
 
+  static void searchSura(String query) {
+    suras.clear();
+    for (int i = 0; i < 114; i++) {
+      if (arabicSurasNames[i].contains(query) ||
+          englishSurahsNames[i].toLowerCase().contains(query.toLowerCase())) {
+        Sura sura = getSuraFromIndex(i);
+        suras.add(sura);
+      }
+    }
+  }
+
   static Future<String> loadSuraFile(int suraNum) =>
       rootBundle.loadString('assets/textdata/$suraNum.txt');
 }
