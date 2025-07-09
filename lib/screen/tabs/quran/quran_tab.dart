@@ -23,7 +23,9 @@ class _QuranTabState extends State<QuranTab> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: TextField(
-            style: Theme.of(context).textTheme.titleMedium,
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium!.copyWith(fontFamily: 'Janna'),
             decoration: InputDecoration(
               hintText: 'Sura Name',
               prefixIcon: SvgPicture.asset(
