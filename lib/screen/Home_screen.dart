@@ -4,7 +4,7 @@ import 'package:islami_app/screen/NavBarunselectedIcon.dart';
 import 'package:islami_app/screen/tabs/hadeth_tab.dart';
 import 'package:islami_app/screen/tabs/quran/quran_tab.dart';
 import 'package:islami_app/screen/tabs/radio_tab.dart';
-import 'package:islami_app/screen/tabs/sebha_tab.dart';
+import 'package:islami_app/screen/tabs/sebha/sebha_tab.dart';
 import 'package:islami_app/screen/tabs/time_tab.dart';
 
 class HomeScreen extends StatefulWidget {
