@@ -30,6 +30,7 @@ class AppTheme {
         fontSize: 16,
         fontWeight: FontWeight.bold,
         color: white,
+        fontFamily: 'Janna LT',
       ),
       titleLarge: TextStyle(
         fontSize: 20,
@@ -41,6 +42,7 @@ class AppTheme {
         fontSize: 13,
         fontWeight: FontWeight.bold,
         color: white,
+        fontFamily: 'Janna LT',
       ),
     ),
   );

@@ -38,7 +38,12 @@ class SuraItem extends StatelessWidget {
           ],
         ),
         Spacer(),
-        Text(sura.arabicName, style: Theme.of(context).textTheme.titleLarge),
+        Text(
+          sura.arabicName,
+          style: Theme.of(
+            context,
+          ).textTheme.titleLarge!.copyWith(fontFamily: 'Janna'),
+        ),
       ],
     );
   }
