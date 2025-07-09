@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-
 import 'package:islami_app/them/app_theme.dart';
 
 class RadioCard extends StatefulWidget {
@@ -17,7 +16,6 @@ class _RadioCardState extends State<RadioCard>
     with SingleTickerProviderStateMixin {
   late bool _currentIsPlaying;
   late AnimationController _waveformController;
-  final int _numberOfBars = 20;
 
   @override
   void initState() {
@@ -68,7 +66,7 @@ class _RadioCardState extends State<RadioCard>
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 15),
+                SizedBox(height: 25),
                 Text(
                   widget.title,
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -76,7 +74,7 @@ class _RadioCardState extends State<RadioCard>
                     fontFamily: 'Janna',
                   ),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 17),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

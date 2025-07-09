@@ -16,29 +16,23 @@ class _RadioTabState extends State<RadioTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
-        SafeArea(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 100,
-                child: TopTabs(
-                  selectedIndex: _selectedIndex,
-                  onTabSelected: (int index) {
-                    setState(() {
-                      _selectedIndex = index;
-                    });
-                  },
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: _buildBodyContent(),
-                ),
-              ),
-            ],
+        SizedBox(
+          height: 50,
+          child: TopTabs(
+            selectedIndex: _selectedIndex,
+            onTabSelected: (int index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.only(top: 0.1),
+            child: _buildBodyContent(),
           ),
         ),
       ],

@@ -16,7 +16,7 @@ class TopTabs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.bottomCenter,
-      padding: const EdgeInsets.only(bottom: 55.0),
+      padding: const EdgeInsets.only(bottom: 10.0),
       child: Container(
         decoration: BoxDecoration(
           color: AppTheme.black.withValues(alpha: 0.5),
