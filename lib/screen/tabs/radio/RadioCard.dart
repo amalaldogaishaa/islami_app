@@ -16,11 +16,47 @@ class _RadioCardState extends State<RadioCard>
     with SingleTickerProviderStateMixin {
   late bool _currentIsPlaying;
   late AnimationController _waveformController;
+  late List<Animation<double>> _barAnimations;
+  final int _numberOfBars = 20;
+  late bool _isVolumeOff;
 
   @override
   void initState() {
     super.initState();
     _currentIsPlaying = widget.isPlaying;
+    _waveformController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    )..repeat(reverse: true);
+
+    _barAnimations = List.generate(_numberOfBars, (index) {
+      return Tween<double>(begin: 0.2, end: 1.0).animate(
+        CurvedAnimation(
+          parent: _waveformController,
+          curve: Interval(
+            index / _numberOfBars * 0.8,
+            (index + 1) / _numberOfBars * 0.8,
+            curve: Curves.easeInOut,
+          ),
+        ),
+      );
+    });
+  }
+
+  @override
+  void didUpdateWidget(covariant RadioCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isPlaying != oldWidget.isPlaying) {
+      setState(() {
+        _currentIsPlaying = widget.isPlaying;
+      });
+      if (_currentIsPlaying) {
+        _waveformController.repeat(reverse: true);
+      } else {
+        _waveformController.stop();
+        _waveformController.reset();
+      }
+    }
   }
 
   @override
