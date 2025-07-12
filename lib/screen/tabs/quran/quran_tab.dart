@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:islami_app/screen/tabs/quran/most_recently_section.dart';
 import 'package:islami_app/screen/tabs/quran/quran_service.dart';
 import 'package:islami_app/screen/tabs/quran/sura.dart';
 import 'package:islami_app/screen/tabs/quran/sura_details_screen.dart';
@@ -43,6 +44,7 @@ class _QuranTabState extends State<QuranTab> {
             },
           ),
         ),
+        MostRecentlySection(),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Text(
@@ -56,10 +58,12 @@ class _QuranTabState extends State<QuranTab> {
             itemBuilder: (_, index) {
               Sura sura = QuranService.suras[index];
               return InkWell(
-                onTap: () {
-                  Navigator.of(
+                onTap: () async {
+                  QuranService.addSuraToMostRecently(sura);
+                  await Navigator.of(
                     context,
                   ).pushNamed(SuraDetailsScreen.routeName, arguments: sura);
+                  setState(() {});
                 },
                 child: SuraItem(sura),
               );
