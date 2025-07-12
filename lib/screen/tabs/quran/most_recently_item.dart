@@ -36,12 +36,14 @@ class MostRecentlyItem extends StatelessWidget {
                   sura.englishName,
                   style: textTheme.headlineSmall!.copyWith(
                     color: AppTheme.black,
+                    fontFamily: 'Janna',
                   ),
                 ),
                 Text(
                   sura.arabicName,
                   style: textTheme.headlineSmall!.copyWith(
                     color: AppTheme.black,
+                    fontFamily: 'Janna',
                   ),
                 ),
                 Text(

@@ -354,7 +354,7 @@ class QuranService {
 
   static List<Sura> suras = List.generate(
     114,
-    (index) => getSuraFromIndex(index) as Sura,
+    (index) => getSuraFromIndex(index),
   );
 
   static List<Sura> mostRecentlySuras = [];

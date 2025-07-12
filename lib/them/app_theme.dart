@@ -47,7 +47,13 @@ class AppTheme {
         fontSize: 16,
         fontWeight: FontWeight.bold,
         color: white,
-        fontFamily: 'Janna LT',
+        fontFamily: 'Janna',
+      ),
+      headlineSmall: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: white,
+        fontFamily: 'Janna',
       ),
       titleLarge: TextStyle(
         fontSize: 20,
