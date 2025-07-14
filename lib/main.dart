@@ -1,32 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:islami_app/screen/Home_screen.dart';
-import 'package:islami_app/screen/tabs/hadeth/hadeth_details_screen.dart';
-import 'package:islami_app/screen/tabs/quran/quran_service.dart';
-import 'package:islami_app/screen/tabs/quran/sura_details_screen.dart';
+import 'package:islami_app/screen/onboarding_screen.dart';
 import 'package:islami_app/them/app_theme.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await QuranService.getMostRecentlySuras();
-  runApp(const IslamiApp());
+
+  final prefs = await SharedPreferences.getInstance();
+  final hasSeenOnboarding = prefs.getBool('hasSeenOnboarding') ?? false;
+
+  runApp(IslamiApp(hasSeenOnboarding: hasSeenOnboarding));
 }
 
 class IslamiApp extends StatelessWidget {
-  const IslamiApp({super.key});
+  final bool hasSeenOnboarding;
+
+  const IslamiApp({super.key, required this.hasSeenOnboarding});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {
-        HomeScreen.routName: (_) => HomeScreen(),
-        SuraDetailsScreen.routeName: (_) => SuraDetailsScreen(),
-        HadethDetailsScreen.routeName: (_) => HadethDetailsScreen(),
-      },
-      initialRoute: HomeScreen.routName,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.dark,
+      routes: {
+        HomeScreen.routName: (_) => HomeScreen(),
+        OnboardingScreen.routeName: (_) => OnboardingScreen(),
+      },
+      initialRoute: hasSeenOnboarding
+          ? HomeScreen.routName
+          : OnboardingScreen.routeName,
     );
   }
 }
